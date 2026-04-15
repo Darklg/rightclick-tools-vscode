@@ -2,7 +2,7 @@
   "name": "rightclick-tools-vscode",
   "displayName": "Right Click Tools",
   "description": "Open file directory in Finder or VSCode terminal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "darklg",
   "repository": "https://github.com/Darklg/rightclick-tools-vscode",
   "engines": {
@@ -21,7 +21,8 @@
   ],
   "activationEvents": [
     "onCommand:extension.openInFinder",
-    "onCommand:extension.openInTerminal"
+    "onCommand:extension.openInTerminal",
+    "onCommand:extension.openInMacTerminal"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -33,6 +34,10 @@
       {
         "command": "extension.openInTerminal",
         "title": "Open Folder in VSCode Terminal"
+      },
+      {
+        "command": "extension.openInMacTerminal",
+        "title": "Open Folder in macOS Terminal"
       }
     ],
     "menus": {
@@ -44,6 +49,11 @@
         },
         {
           "command": "extension.openInTerminal",
+          "when": "resourceScheme == file",
+          "group": "rightclick_tools@99"
+        },
+        {
+          "command": "extension.openInMacTerminal",
           "when": "resourceScheme == file",
           "group": "rightclick_tools@99"
         }

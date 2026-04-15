@@ -44,6 +44,18 @@ function openInFinder(dir) {
 }
 
 /**
+ * Open folder in macOS Terminal.app
+ * @param {string} dir
+ */
+function openInMacTerminal(dir) {
+    exec(`open -a Terminal "${dir}"`, (err) => {
+        if (err) {
+            vscode.window.showErrorMessage(`Failed to open macOS Terminal: ${err.message}`);
+        }
+    });
+}
+
+/**
  * Open folder in VSCode terminal
  * @param {string} dir
  */
@@ -84,7 +96,19 @@ function activate(context) {
         }
     );
 
-    context.subscriptions.push(openFinderCmd, openTerminalCmd);
+    const openMacTerminalCmd = vscode.commands.registerCommand(
+        'extension.openInMacTerminal',
+        (uri) => {
+            try {
+                const dir = getDirectory(getUri(uri));
+                openInMacTerminal(dir);
+            } catch (e) {
+                vscode.window.showErrorMessage(e.message);
+            }
+        }
+    );
+
+    context.subscriptions.push(openFinderCmd, openTerminalCmd, openMacTerminalCmd);
 }
 
 function deactivate() {}
