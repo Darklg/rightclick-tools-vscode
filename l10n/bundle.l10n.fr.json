@@ -1,0 +1,6 @@
+{
+  "No file context available": "Aucun contexte de fichier disponible",
+  "Invalid URI": "URI invalide",
+  "Failed to open Finder: {0}": "Impossible d'ouvrir le Finder : {0}",
+  "Failed to open macOS Terminal: {0}": "Impossible d'ouvrir le terminal macOS : {0}"
+}

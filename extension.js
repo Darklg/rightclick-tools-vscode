@@ -14,7 +14,7 @@ function getUri(uri) {
         return editor.document.uri;
     }
 
-    throw new Error('No file context available');
+    throw new Error(vscode.l10n.t('No file context available'));
 }
 
 /**
@@ -24,7 +24,7 @@ function getUri(uri) {
  */
 function getDirectory(uri) {
     if (!uri || !uri.fsPath) {
-        throw new Error('Invalid URI');
+        throw new Error(vscode.l10n.t('Invalid URI'));
     }
 
     const fsPath = uri.fsPath;
@@ -38,7 +38,7 @@ function getDirectory(uri) {
 function openInFinder(dir) {
     exec(`open "${dir}"`, (err) => {
         if (err) {
-            vscode.window.showErrorMessage(`Failed to open Finder: ${err.message}`);
+            vscode.window.showErrorMessage(vscode.l10n.t('Failed to open Finder: {0}', err.message));
         }
     });
 }
@@ -50,7 +50,7 @@ function openInFinder(dir) {
 function openInMacTerminal(dir) {
     exec(`open -a Terminal "${dir}"`, (err) => {
         if (err) {
-            vscode.window.showErrorMessage(`Failed to open macOS Terminal: ${err.message}`);
+            vscode.window.showErrorMessage(vscode.l10n.t('Failed to open macOS Terminal: {0}', err.message));
         }
     });
 }

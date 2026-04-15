@@ -24,6 +24,7 @@ Debug: **F5** in VS Code launches an Extension Host window (see `.vscode/launch.
 - `extension.js` — registers three commands in `activate()`: `extension.openInFinder`, `extension.openInTerminal`, `extension.openInMacTerminal`. Helpers: `getUri()` resolves file context (right-click URI or active editor), `getDirectory()` extracts the parent dir.
 - `package.json` — declares commands, context menu contributions (`editor/context` with `resourceScheme == file` guard), and activation events.
 - macOS-only: `openInFinder` shells out to `open`, `openInMacTerminal` to `open -a Terminal`.
+- Localization: command titles use `%command.xxx%` placeholders in `package.json` resolved via `package.nls.json` (en) / `package.nls.fr.json` (fr). Runtime strings use `vscode.l10n.t()` with bundles in `l10n/`.
 
 ## Conventions
 
