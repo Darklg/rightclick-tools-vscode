@@ -44,6 +44,18 @@ function openInFinder(dir) {
 }
 
 /**
+ * Open file in its default macOS app
+ * @param {string} file
+ */
+function openInDefaultApp(file) {
+    exec(`open "${file}"`, (err) => {
+        if (err) {
+            vscode.window.showErrorMessage(vscode.l10n.t('Failed to open file: {0}', err.message));
+        }
+    });
+}
+
+/**
  * Open folder in macOS Terminal.app
  * @param {string} dir
  */
@@ -108,7 +120,19 @@ function activate(context) {
         }
     );
 
-    context.subscriptions.push(openFinderCmd, openTerminalCmd, openMacTerminalCmd);
+    const openInDefaultAppCmd = vscode.commands.registerCommand(
+        'extension.openInDefaultApp',
+        (uri) => {
+            try {
+                const fileUri = getUri(uri);
+                openInDefaultApp(fileUri.fsPath);
+            } catch (e) {
+                vscode.window.showErrorMessage(e.message);
+            }
+        }
+    );
+
+    context.subscriptions.push(openFinderCmd, openTerminalCmd, openMacTerminalCmd, openInDefaultAppCmd);
 }
 
 function deactivate() {}

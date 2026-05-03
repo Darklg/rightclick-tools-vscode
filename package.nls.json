@@ -1,5 +1,6 @@
 {
   "command.openInFinder": "Open Folder in Finder",
   "command.openInTerminal": "Open Folder in VSCode Terminal",
-  "command.openInMacTerminal": "Open Folder in macOS Terminal"
+  "command.openInMacTerminal": "Open Folder in macOS Terminal",
+  "command.openInDefaultApp": "Open in Default App"
 }

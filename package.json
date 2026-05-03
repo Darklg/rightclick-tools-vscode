@@ -2,7 +2,7 @@
   "name": "rightclick-tools-vscode",
   "displayName": "Right Click Tools",
   "description": "Open file directory in Finder or VSCode terminal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "KevinRocher",
   "repository": "https://github.com/Darklg/rightclick-tools-vscode.git",
   "engines": {
@@ -26,7 +26,8 @@
   "activationEvents": [
     "onCommand:extension.openInFinder",
     "onCommand:extension.openInTerminal",
-    "onCommand:extension.openInMacTerminal"
+    "onCommand:extension.openInMacTerminal",
+    "onCommand:extension.openInDefaultApp"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -42,24 +43,33 @@
       {
         "command": "extension.openInMacTerminal",
         "title": "%command.openInMacTerminal%"
+      },
+      {
+        "command": "extension.openInDefaultApp",
+        "title": "%command.openInDefaultApp%"
       }
     ],
     "menus": {
       "editor/context": [
         {
+          "command": "extension.openInDefaultApp",
+          "when": "resourceScheme == file",
+          "group": "rightclick_tools@1"
+        },
+        {
           "command": "extension.openInFinder",
           "when": "resourceScheme == file",
-          "group": "rightclick_tools@99"
+          "group": "rightclick_tools@2"
         },
         {
           "command": "extension.openInTerminal",
           "when": "resourceScheme == file",
-          "group": "rightclick_tools@99"
+          "group": "rightclick_tools@3"
         },
         {
           "command": "extension.openInMacTerminal",
           "when": "resourceScheme == file",
-          "group": "rightclick_tools@99"
+          "group": "rightclick_tools@4"
         }
       ]
     }

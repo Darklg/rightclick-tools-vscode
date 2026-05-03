@@ -1,5 +1,6 @@
 {
   "command.openInFinder": "Ouvrir le dossier dans le Finder",
   "command.openInTerminal": "Ouvrir le dossier dans le terminal VSCode",
-  "command.openInMacTerminal": "Ouvrir le dossier dans le terminal macOS"
+  "command.openInMacTerminal": "Ouvrir le dossier dans le terminal macOS",
+  "command.openInDefaultApp": "Ouvrir avec l'application par défaut"
 }
