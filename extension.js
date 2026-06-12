@@ -73,17 +73,51 @@ function openInMacTerminal(dir) {
  */
 function openInTerminal(dir) {
     const terminal = vscode.window.createTerminal({
-        name: 'Folder Terminal',
+        name: path.basename(dir),
         cwd: dir
     });
 
     terminal.show();
 }
 
+// Context menu entries toggled via settings, per location scope
+const MENU_SCOPES = ['editor', 'explorer'];
+const MENU_ENTRIES = [
+    'openInDefaultApp',
+    'openInFinder',
+    'openInTerminal',
+    'openInMacTerminal'
+];
+
+/**
+ * Publish a context key per menu entry/scope reflecting its setting,
+ * so menu `when` clauses can hide disabled entries.
+ */
+function syncContextKeys() {
+    MENU_SCOPES.forEach((scope) => {
+        const config = vscode.workspace.getConfiguration(`rightclickTools.${scope}`);
+        MENU_ENTRIES.forEach((entry) => {
+            vscode.commands.executeCommand(
+                'setContext',
+                `rightclickTools.${scope}.${entry}`,
+                config.get(entry, true)
+            );
+        });
+    });
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+    syncContextKeys();
+
+    const configWatcher = vscode.workspace.onDidChangeConfiguration((e) => {
+        if (e.affectsConfiguration('rightclickTools')) {
+            syncContextKeys();
+        }
+    });
+
     const openFinderCmd = vscode.commands.registerCommand(
         'extension.openInFinder',
         (uri) => {
@@ -132,7 +166,7 @@ function activate(context) {
         }
     );
 
-    context.subscriptions.push(openFinderCmd, openTerminalCmd, openMacTerminalCmd, openInDefaultAppCmd);
+    context.subscriptions.push(configWatcher, openFinderCmd, openTerminalCmd, openMacTerminalCmd, openInDefaultAppCmd);
 }
 
 function deactivate() {}

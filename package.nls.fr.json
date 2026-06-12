@@ -2,5 +2,13 @@
   "command.openInFinder": "Ouvrir le dossier dans le Finder",
   "command.openInTerminal": "Ouvrir le dossier dans le terminal VSCode",
   "command.openInMacTerminal": "Ouvrir le dossier dans le terminal macOS",
-  "command.openInDefaultApp": "Ouvrir avec l'application par défaut"
+  "command.openInDefaultApp": "Ouvrir avec l'application par défaut",
+  "config.editor.openInDefaultApp.desc": "Afficher « Ouvrir avec l'application par défaut » dans le menu contextuel de l'éditeur",
+  "config.editor.openInFinder.desc": "Afficher « Ouvrir le dossier dans le Finder » dans le menu contextuel de l'éditeur",
+  "config.editor.openInTerminal.desc": "Afficher « Ouvrir le dossier dans le terminal VSCode » dans le menu contextuel de l'éditeur",
+  "config.editor.openInMacTerminal.desc": "Afficher « Ouvrir le dossier dans le terminal macOS » dans le menu contextuel de l'éditeur",
+  "config.explorer.openInDefaultApp.desc": "Afficher « Ouvrir avec l'application par défaut » dans le menu contextuel de l'explorateur de fichiers",
+  "config.explorer.openInFinder.desc": "Afficher « Ouvrir le dossier dans le Finder » dans le menu contextuel de l'explorateur de fichiers",
+  "config.explorer.openInTerminal.desc": "Afficher « Ouvrir le dossier dans le terminal VSCode » dans le menu contextuel de l'explorateur de fichiers",
+  "config.explorer.openInMacTerminal.desc": "Afficher « Ouvrir le dossier dans le terminal macOS » dans le menu contextuel de l'explorateur de fichiers"
 }

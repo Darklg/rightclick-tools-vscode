@@ -2,5 +2,13 @@
   "command.openInFinder": "Open Folder in Finder",
   "command.openInTerminal": "Open Folder in VSCode Terminal",
   "command.openInMacTerminal": "Open Folder in macOS Terminal",
-  "command.openInDefaultApp": "Open in Default App"
+  "command.openInDefaultApp": "Open in Default App",
+  "config.editor.openInDefaultApp.desc": "Show \"Open in Default App\" in the editor context menu",
+  "config.editor.openInFinder.desc": "Show \"Open Folder in Finder\" in the editor context menu",
+  "config.editor.openInTerminal.desc": "Show \"Open Folder in VSCode Terminal\" in the editor context menu",
+  "config.editor.openInMacTerminal.desc": "Show \"Open Folder in macOS Terminal\" in the editor context menu",
+  "config.explorer.openInDefaultApp.desc": "Show \"Open in Default App\" in the file explorer context menu",
+  "config.explorer.openInFinder.desc": "Show \"Open Folder in Finder\" in the file explorer context menu",
+  "config.explorer.openInTerminal.desc": "Show \"Open Folder in VSCode Terminal\" in the file explorer context menu",
+  "config.explorer.openInMacTerminal.desc": "Show \"Open Folder in macOS Terminal\" in the file explorer context menu"
 }

@@ -2,7 +2,7 @@
   "name": "rightclick-tools-vscode",
   "displayName": "Right Click Tools",
   "description": "Open file directory in Finder or VSCode terminal",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "KevinRocher",
   "repository": "https://github.com/Darklg/rightclick-tools-vscode.git",
   "engines": {
@@ -24,6 +24,7 @@
     "l10n/"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:extension.openInFinder",
     "onCommand:extension.openInTerminal",
     "onCommand:extension.openInMacTerminal",
@@ -31,6 +32,51 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Right Click Tools",
+      "properties": {
+        "rightclickTools.editor.openInDefaultApp": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.editor.openInDefaultApp.desc%"
+        },
+        "rightclickTools.editor.openInFinder": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.editor.openInFinder.desc%"
+        },
+        "rightclickTools.editor.openInTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.editor.openInTerminal.desc%"
+        },
+        "rightclickTools.editor.openInMacTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.editor.openInMacTerminal.desc%"
+        },
+        "rightclickTools.explorer.openInDefaultApp": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.explorer.openInDefaultApp.desc%"
+        },
+        "rightclickTools.explorer.openInFinder": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.explorer.openInFinder.desc%"
+        },
+        "rightclickTools.explorer.openInTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.explorer.openInTerminal.desc%"
+        },
+        "rightclickTools.explorer.openInMacTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.explorer.openInMacTerminal.desc%"
+        }
+      }
+    },
     "commands": [
       {
         "command": "extension.openInFinder",
@@ -53,22 +99,44 @@
       "editor/context": [
         {
           "command": "extension.openInDefaultApp",
-          "when": "resourceScheme == file",
+          "when": "resourceScheme == file && rightclickTools.editor.openInDefaultApp",
           "group": "rightclick_tools@1"
         },
         {
           "command": "extension.openInFinder",
-          "when": "resourceScheme == file",
+          "when": "resourceScheme == file && rightclickTools.editor.openInFinder",
           "group": "rightclick_tools@2"
         },
         {
           "command": "extension.openInTerminal",
-          "when": "resourceScheme == file",
+          "when": "resourceScheme == file && rightclickTools.editor.openInTerminal",
           "group": "rightclick_tools@3"
         },
         {
           "command": "extension.openInMacTerminal",
-          "when": "resourceScheme == file",
+          "when": "resourceScheme == file && rightclickTools.editor.openInMacTerminal",
+          "group": "rightclick_tools@4"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.openInDefaultApp",
+          "when": "resourceScheme == file && rightclickTools.explorer.openInDefaultApp",
+          "group": "rightclick_tools@1"
+        },
+        {
+          "command": "extension.openInFinder",
+          "when": "resourceScheme == file && rightclickTools.explorer.openInFinder",
+          "group": "rightclick_tools@2"
+        },
+        {
+          "command": "extension.openInTerminal",
+          "when": "resourceScheme == file && rightclickTools.explorer.openInTerminal",
+          "group": "rightclick_tools@3"
+        },
+        {
+          "command": "extension.openInMacTerminal",
+          "when": "resourceScheme == file && rightclickTools.explorer.openInMacTerminal",
           "group": "rightclick_tools@4"
         }
       ]
